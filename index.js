@@ -4,9 +4,16 @@ const port = 3000;
 // Create Express App
 const app = express();
 
-app.get('/', (req, res) => {
-    res.json({"message": "welcome"});
-})
+// Db COnfig
+const db = require('./config/mongoose');
+
+// Parse requests
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(bodyParser.json());
+app.use('/', require('./routes'));
+
+
 
 
 
